@@ -4,6 +4,9 @@ pipeline {
             label 'docker-agent-alpine' 
         }
     }
+    triggers {
+        pollSCM('H/5 * * * *') // Polls every 5 minutes
+    }
     stages {
         stage('Build') {
             steps {
@@ -18,7 +21,7 @@ pipeline {
                 echo "Testing.."
                 sh '''
                 echo "doing test stuff.."
-                ''' // Ensure closing quote is here
+                '''
             }
         }
         stage('Deliver') {
