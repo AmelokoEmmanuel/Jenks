@@ -1,2 +1,2 @@
 
-print("Hello The Love of my life")
+print("My God is good all the time")
