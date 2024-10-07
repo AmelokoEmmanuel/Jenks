@@ -12,7 +12,12 @@ pipeline {
             steps {
                 echo "Building.."
                 sh '''
-                echo "doing build stuff.."
+                # Create a virtual environment
+                python3 -m venv venv
+                # Activate the virtual environment
+                . venv/bin/activate
+                # Install dependencies
+                pip install -r requirements.txt
                 '''
             }
         }
@@ -20,6 +25,9 @@ pipeline {
             steps {
                 echo "Testing.."
                 sh '''
+                # Activate the virtual environment
+                . venv/bin/activate
+                # Run your test commands here
                 echo "doing test stuff.."
                 '''
             }
@@ -28,6 +36,9 @@ pipeline {
             steps {
                 echo 'Deliver....'
                 sh '''
+                # Activate the virtual environment
+                . venv/bin/activate
+                # Run your delivery commands here
                 echo "doing delivery stuff.."
                 '''
             }
