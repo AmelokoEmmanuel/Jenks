@@ -1,9 +1,9 @@
 pipeline {
     agent { 
         node {
-            label 'jenkins-agent-goes-here'
-            }
-      }
+            label 'docker-agent-alpine' 
+        }
+    }
     stages {
         stage('Build') {
             steps {
@@ -17,8 +17,8 @@ pipeline {
             steps {
                 echo "Testing.."
                 sh '''
-                echo "doing test stuff..
-                '''
+                echo "doing test stuff.."
+                ''' // Ensure closing quote is here
             }
         }
         stage('Deliver') {
